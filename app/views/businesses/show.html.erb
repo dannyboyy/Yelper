@@ -1,18 +1,31 @@
-<%= image_tag @business.image.url(:medium) %>
-<p>
-  <strong>Name:</strong>
-  <%= @business.name %>
-</p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @business.address %>
-</p>
-
-<p>
-  <strong>Rating:</strong>
-  <%= @business.rating %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+        <%= image_tag @business.image.url(:medium) %>
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td><strong>Name:</strong></td>
+                <td><%= @business.name %></td>
+              </tr>
+              <tr>
+                <td><strong>Address:</strong></td>
+                <td><%= @business.address %></td>
+              </tr>
+              <tr>
+                <td><strong>Rating:</strong></td>
+                <td><%= @business.rating %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_business_path(@business) %> |
 <%= link_to 'Back', businesses_path %>
