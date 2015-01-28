@@ -1,5 +1,6 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /businesses
   # GET /businesses.json
@@ -14,7 +15,7 @@ class BusinessesController < ApplicationController
 
   # GET /businesses/new
   def new
-    @business = Business.new
+    @business = current_user.businesses.build
   end
 
   # GET /businesses/1/edit
@@ -24,7 +25,7 @@ class BusinessesController < ApplicationController
   # POST /businesses
   # POST /businesses.json
   def create
-    @business = Business.new(business_params)
+    @business = current_user.businesses.build(business_params)
 
     respond_to do |format|
       if @business.save
