@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128021833) do
+ActiveRecord::Schema.define(version: 20150129000558) do
 
   create_table "businesses", force: true do |t|
     t.string   "name"
@@ -25,6 +25,18 @@ ActiveRecord::Schema.define(version: 20150128021833) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  create_table "reviews", force: true do |t|
+    t.integer  "rating"
+    t.text     "comment"
+    t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "business_id"
+    t.integer  "user_id"
+  end
+
+  add_index "reviews", ["business_id"], name: "index_reviews_on_business_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
