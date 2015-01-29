@@ -1,15 +1,9 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_business
   before_action :authenticate_user!
 
   respond_to :html
-
-  def index
-    @reviews = Review.all
-  end
-
-  def show
-  end
 
   def new
     @review = Review.new
@@ -21,9 +15,10 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
+    @review.business_id = @business.id
     
     if @review.save
-      redirect_to @review
+      redirect_to @business
     else
       render 'new'
     end
@@ -41,6 +36,10 @@ class ReviewsController < ApplicationController
   private
     def set_review
       @review = Review.find(params[:id])
+    end
+
+    def set_business
+      @business = Business.find(params[:business_id])
     end
 
     def review_params
