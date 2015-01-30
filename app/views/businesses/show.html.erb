@@ -16,6 +16,14 @@
                 <td><%= @business.address %></td>
               </tr>
               <tr>
+                <td><strong>Latitude:</strong></td>
+                <td><%= @business.latitude %></td>
+              </tr>
+              <tr>
+                <td><strong>Longitude:</strong></td>
+                <td><%= @business.longitude %></td>
+              </tr>
+              <tr>
                 <td><strong>Avg. Cost/Person:</strong></td>
                 <td><%= @avg_price %></td>
               </tr>
@@ -27,6 +35,8 @@
       <div class="col-md-7 col-md-offset-1">
         <h1 class="review_title"><%= @business.name %></h1>
         <p><%= @business.address %></p>
+
+        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@business.latitude}%2C#{@business.longitude}" %>
 
         <% if @reviews.blank? %>
           <h3>No reviews just yet, would you like to add the first?</h3>
