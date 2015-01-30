@@ -15,10 +15,6 @@
                 <td><strong>Address:</strong></td>
                 <td><%= @business.address %></td>
               </tr>
-              <tr>
-                <td><strong>Rating:</strong></td>
-                <td><%= @business.rating %></td>
-              </tr>
             </tbody>
           </table>
           <%= link_to "Write a Review", new_business_review_path(@business), class: "btn btn-danger" %>
@@ -36,7 +32,7 @@
             <div class="reviews">
               <div class="star-rating" data-score= <%= review.rating %> ></div>
               <p>Comment: <%= review.comment %></p>
-              <p>Price: <%= review.price %></p>
+              <p>Average Cost: <%= review.price %></p>
             </div>
           <% end %>
         <% end %>
