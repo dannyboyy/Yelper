@@ -15,6 +15,10 @@
                 <td><strong>Address:</strong></td>
                 <td><%= @business.address %></td>
               </tr>
+              <tr>
+                <td><strong>Avg. Cost/Person:</strong></td>
+                <td><%= @avg_price %></td>
+              </tr>
             </tbody>
           </table>
           <%= link_to "Write a Review", new_business_review_path(@business), class: "btn btn-danger" %>

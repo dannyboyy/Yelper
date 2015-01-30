@@ -18,6 +18,12 @@ class BusinessesController < ApplicationController
     else
       @avg_review = @reviews.average(:rating).round(2)
     end
+
+    if @reviews.blank?
+      @avg_price = 0
+    else
+      @avg_price = @reviews.average(:price).round(2)
+    end
   end
 
   # GET /businesses/new
