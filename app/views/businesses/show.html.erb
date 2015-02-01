@@ -1,41 +1,24 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="row">
-      <div class="col-md-4">
-        <%= image_tag @business.image.url(:medium) %>
-        <div class="star-rating" data-score = <%= @avg_review %> ></div><em><%= "#{@reviews.length} reviews"%></em>
-        <div class="table-responsive">
-          <table class="table">
-            <tbody>
-              <tr>
-                <td><strong>Name:</strong></td>
-                <td><%= @business.name %></td>
-              </tr>
-              <tr>
-                <td><strong>Address:</strong></td>
-                <td><%= @business.address %></td>
-              </tr>
-              <tr>
-                <td><strong>Latitude:</strong></td>
-                <td><%= @business.latitude %></td>
-              </tr>
-              <tr>
-                <td><strong>Longitude:</strong></td>
-                <td><%= @business.longitude %></td>
-              </tr>
-              <tr>
-                <td><strong>Avg. Cost/Person:</strong></td>
-                <td><%= @avg_price %></td>
-              </tr>
-            </tbody>
-          </table>
-          <%= link_to "Write a Review", new_business_review_path(@business), class: "btn btn-danger" %>
+      <div class="col-md-10 col-md-offset-1">
+        <div class="basic-info">
+          <h1 class="shop-name"><%= @business.name %></h1>
+          <div class="brief-info">
+            <span class="star-rating" data-score = <%= @avg_review %> ></span>
+            <span class="item"><em><%= "#{@reviews.length} reviews"%></em></span>
+            <span class="item">Average Cost: <%= @avg_price %></span> |
+            <div class="item"></div>
+          </div>
+          <div class="expand-info address">
+            <span>Address: </span><span><%= @business.address %></span>
+          </div>
+          <div class="action"><%= link_to "Write a Review", new_business_review_path(@business), class: "btn btn-danger" %></div>
         </div>
       </div>
+      
       <div class="col-md-7 col-md-offset-1">
-        <h1 class="review_title"><%= @business.name %></h1>
-        <p><%= @business.address %></p>
-
+        
         <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@business.latitude}%2C#{@business.longitude}" %>
 
         <% if @reviews.blank? %>
