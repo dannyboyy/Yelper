@@ -14,6 +14,7 @@ gem 'bootstrap-sass', '~> 3.3.3'
 gem 'geocoder', '~> 1.2.7'
 gem 'font-awesome-sass'
 gem 'searchkick', '~> 0.8.5'
+gem 'simple_form', '~> 3.0.2'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

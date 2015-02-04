@@ -1,31 +1,40 @@
-<%= form_for([@business, @review]) do |f| %>
-  <% if @review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+<div class="col-md-8">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= form_for([@business, @review]) do |f| %>
+          <% if @review.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+              <ul>
+              <% @review.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
 
-      <ul>
-      <% @review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <div class="form-group">
+            <%= f.label :Rating %><br>
+            <div id="star-rating"></div><p id="hint" type="text"></p>
+          </div>
+          <div class="form-group">
+            <%= f.label :comment %><br>
+            <%= f.text_area :comment, autofocus: true, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :price %><br>
+            <%= f.number_field :price, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Create Review", class: "btn btn-danger" %>
+            <%= link_to "Cancel", @business, class: "btn btn-danger" %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <div id="star-rating"></div><p id="hint" type="text"></p>
   </div>
-  <div class="field">
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.number_field :price %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
 
 <script>
   $('#star-rating').raty({ 

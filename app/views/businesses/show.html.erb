@@ -7,14 +7,14 @@
             <span class="star-rating" data-score = <%= @avg_review %> ></span>
             <span class="item"><em><%= "#{@reviews.length} reviews"%></em></span>
             <span class="item">Average Cost: <%= @avg_price %></span>
-            <div class="item"></div>
+            <div class="item"></div><br>
           </div>
           <div class="expand-info address">
             <span>Address: </span><span><%= @business.address %></span>
-          </div>
+          </div><br>
           <div class="action"><%= link_to "Write a Review", new_business_review_path(@business), class: "btn btn-danger" %></div>
           <div class="review-map">
-            <%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=false&zoom=16&markers=#{@business.latitude}%2C#{@business.longitude}" %>
+            <%= image_tag "http://maps.google.com/maps/api/staticmap?size=350x250&sensor=false&zoom=16&markers=#{@business.latitude}%2C#{@business.longitude}" %>
           </div>
         </div>
       </div>
