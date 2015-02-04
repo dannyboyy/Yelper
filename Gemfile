@@ -13,6 +13,7 @@ gem 'paperclip', '~> 4.2.1'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'geocoder', '~> 1.2.7'
 gem 'font-awesome-sass'
+gem 'searchkick', '~> 0.8.5'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

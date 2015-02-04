@@ -2,10 +2,12 @@ class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
-  # GET /businesses
-  # GET /businesses.json
   def index
-    @businesses = Business.all
+    if params[:search].present?
+      @businesses = Business.search(params[:search])
+    else
+      @businesses = Business.all
+    end
   end
 
   # GET /businesses/1
