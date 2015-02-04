@@ -15,7 +15,7 @@ gem 'geocoder', '~> 1.2.7'
 gem 'font-awesome-sass'
 gem 'searchkick', '~> 0.8.5'
 gem 'simple_form', '~> 3.0.2'
-
+gem 'acts_as_votable', '~> 0.10.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 group :development do

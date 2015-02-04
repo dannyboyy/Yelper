@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_review, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :set_business
   before_action :authenticate_user!
 
@@ -36,6 +36,16 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     redirect_to root_path
+  end
+
+  def upvote
+    @review.upvote_by current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @review.downvote_from current_user
+    redirect_to :back
   end
 
   private
