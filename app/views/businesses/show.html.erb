@@ -1,13 +1,12 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <div class="row">
       <div class="col-md-10 col-md-offset-1">
         <div class="basic-info">
           <h1 class="shop-name"><%= @business.name %></h1>
           <div class="brief-info">
             <span class="star-rating" data-score = <%= @avg_review %> ></span>
             <span class="item"><em><%= "#{@reviews.length} reviews"%></em></span>
-            <span class="item">Average Cost: <%= @avg_price %></span> |
+            <span class="item">Average Cost: <%= @avg_price %></span>
             <div class="item"></div>
           </div>
           <div class="expand-info address">
@@ -16,11 +15,12 @@
           <div class="action"><%= link_to "Write a Review", new_business_review_path(@business), class: "btn btn-danger" %></div>
         </div>
       </div>
-      
-      <div class="col-md-7 col-md-offset-1">
-        
-        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@business.latitude}%2C#{@business.longitude}" %>
+      <div class="col-md-4 col-md-offset-6">
+        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=false&zoom=16&markers=#{@business.latitude}%2C#{@business.longitude}" %>
+      </div>
 
+
+      <div class="col-md-7 col-md-offset-1">
         <% if @reviews.blank? %>
           <h3>No reviews just yet, would you like to add the first?</h3>
           <%= link_to "Write a Review", new_business_review_path(@business), class: "btn btn-danger" %>
@@ -34,7 +34,6 @@
           <% end %>
         <% end %>
       </div>
-    </div>
   </div>
 </div>
 
