@@ -25,7 +25,12 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review.update(review_params)
+    @business = Business.find(params[:business_id])
+    if @review.update(review_params)
+      redirect_to @business
+    else
+      render 'edit'
+    end
   end
 
   def destroy

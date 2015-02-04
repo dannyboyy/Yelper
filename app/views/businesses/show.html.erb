@@ -13,12 +13,11 @@
             <span>Address: </span><span><%= @business.address %></span>
           </div>
           <div class="action"><%= link_to "Write a Review", new_business_review_path(@business), class: "btn btn-danger" %></div>
+          <div class="review-map">
+            <%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=false&zoom=16&markers=#{@business.latitude}%2C#{@business.longitude}" %>
+          </div>
         </div>
       </div>
-      <div class="col-md-4 col-md-offset-6">
-        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=false&zoom=16&markers=#{@business.latitude}%2C#{@business.longitude}" %>
-      </div>
-
 
       <div class="col-md-7 col-md-offset-1">
         <% if @reviews.blank? %>
@@ -26,10 +25,11 @@
           <%= link_to "Write a Review", new_business_review_path(@business), class: "btn btn-danger" %>
         <% else %>
           <% @reviews.each do |review| %>
-            <div class="reviews">
+            <div class="review-wrapper">
               <div class="star-rating" data-score= <%= review.rating %> ></div>
               <p>Comment: <%= review.comment %></p>
               <p>Average Cost: <%= review.price %></p>
+              <p>Reviewed By: <%= current_user.email %></p>
             </div>
           <% end %>
         <% end %>
@@ -37,8 +37,7 @@
   </div>
 </div>
 
-<%= link_to 'Edit', edit_business_path(@business) %> |
-<%= link_to 'Back', businesses_path %>
+
 
 <script>
   $('.star-rating').raty({
