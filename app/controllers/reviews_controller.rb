@@ -60,4 +60,8 @@ class ReviewsController < ApplicationController
     def review_params
       params.require(:review).permit(:rating, :comment, :price)
     end
+
+    def published?
+      
+    end
 end
