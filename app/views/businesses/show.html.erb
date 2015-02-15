@@ -29,7 +29,7 @@
               <div class="star-rating" data-score= <%= review.rating %> ></div>
               <p>Comment: <%= review.comment %></p>
               <p>Average Cost: <%= review.price %></p>
-              <p>Reviewed By: <%= current_user.email %></p>
+              <p>Reviewed By: <%= review.user.email %></p>
             </div>
           <% end %>
         <% end %>
