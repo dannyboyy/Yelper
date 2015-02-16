@@ -1,45 +1,47 @@
 <div class="panel panel-default">
   <div class="container">
-    <div class="row">
-      <!-- Business Info -->
-      <div class="col-md-7 col-md-offset-1">
-        <div class="basic-info">
-          <h1 class="shop-name"><%= link_to @business.name, edit_business_path %></h1>
-          <div class="brief-info">
-            <span class="star-rating" data-score = <%= @avg_review %> ></span>
-            <span class="item"><em><%= "#{@reviews.length} reviews"%></em></span>
-            <span class="item">Average Cost: <%= @avg_price %></span>
-            <div class="item"></div><br>
-          </div>
-          <div class="expand-info address">
-            <span>Address: </span><span><%= @business.address %></span>
-          </div><br>
-          <div class="action"><%= link_to "Write a Review", new_business_review_path(@business), class: "btn btn-danger" %></div>
+    <!-- Business Info -->
+    <div class="col-md-7">
+      <div class="basic-info">
+        <h1 class="shop-name"><%= link_to @business.name, edit_business_path %></h1>
+        <div class="brief-info">
+          <span class="star-rating" data-score = <%= @avg_review %> ></span>
+          <span class="item"><em><%= "#{@reviews.length} reviews"%></em></span>
+          <span class="item">Average Cost: <%= @avg_price %></span>
+          <div class="item"></div><br>
         </div>
-      </div>
-      <!-- Static Map -->
-      <div class="col-md-4">
-        <div class="review-map">
-          <%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=false&zoom=16&markers=#{@business.latitude}%2C#{@business.longitude}", class: "thumbnail" %>
-        </div>
+        <div class="expand-info address">
+          <span>Address: </span><span><%= @business.address %></span>
+        </div><br>
+        <div class="action"><%= link_to "Write a Review", new_business_review_path(@business), class: "btn btn-danger" %></div>
       </div>
     </div>
-      <!-- Reviews -->
-      <div class="col-md-7 col-md-offset-1">
-        <% if @reviews.blank? %>
-          <h3>No reviews just yet, would you like to add the first?</h3>
-          <%= link_to "Write a Review", new_business_review_path(@business), class: "btn btn-danger" %>
-        <% else %>
-          <% @reviews.each do |review| %>
-            <div class="review-wrapper">
-              <div class="star-rating" data-score= <%= review.rating %> ></div>
-              <p>Comment: <%= review.comment %></p>
-              <p>Average Cost: <%= review.price %></p>
-              <p>Reviewed By: <%= review.user.email %></p>
-            </div>
-          <% end %>
-        <% end %>
+    <!-- Static Map -->
+    <div class="col-md-5">
+      <div class="review-map">
+        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=false&zoom=16&markers=#{@business.latitude}%2C#{@business.longitude}", class: "thumbnail" %>
       </div>
+    </div>
+    <!-- Reviews -->
+    <div class="col-md-7">
+      <% if @reviews.blank? %>
+        <h3>No reviews just yet, would you like to add the first?</h3>
+        <%= link_to "Write a Review", new_business_review_path(@business), class: "btn btn-danger" %>
+      <% else %>
+        <% @reviews.each do |review| %>
+          <div class="review-wrapper">
+            <div class="star-rating" data-score= <%= review.rating %> ></div>
+            <p>Comment: <%= review.comment %></p>
+            <p>Average Cost: <%= review.price %></p>
+            <p>Reviewed By: <%= link_to review.user.email, edit_business_review_path(@business, review) %></p>
+          </div>
+          <!-- photos -->
+          <div class="review-photos">
+            <%= image_tag review.image_url(:thumb) if review.image? %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 <script>
