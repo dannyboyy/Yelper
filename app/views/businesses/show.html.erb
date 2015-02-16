@@ -1,6 +1,8 @@
 <div class="panel panel-default">
-  <div class="panel-body">
-      <div class="col-md-10 col-md-offset-1">
+  <div class="container">
+    <div class="row">
+      <!-- Business Info -->
+      <div class="col-md-7 col-md-offset-1">
         <div class="basic-info">
           <h1 class="shop-name"><%= link_to @business.name, edit_business_path %></h1>
           <div class="brief-info">
@@ -13,12 +15,16 @@
             <span>Address: </span><span><%= @business.address %></span>
           </div><br>
           <div class="action"><%= link_to "Write a Review", new_business_review_path(@business), class: "btn btn-danger" %></div>
-          <div class="review-map">
-            <%= image_tag "http://maps.google.com/maps/api/staticmap?size=350x250&sensor=false&zoom=16&markers=#{@business.latitude}%2C#{@business.longitude}" %>
-          </div>
         </div>
       </div>
-
+      <!-- Static Map -->
+      <div class="col-md-4">
+        <div class="review-map">
+          <%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x200&sensor=false&zoom=16&markers=#{@business.latitude}%2C#{@business.longitude}", class: "thumbnail" %>
+        </div>
+      </div>
+    </div>
+      <!-- Reviews -->
       <div class="col-md-7 col-md-offset-1">
         <% if @reviews.blank? %>
           <h3>No reviews just yet, would you like to add the first?</h3>
