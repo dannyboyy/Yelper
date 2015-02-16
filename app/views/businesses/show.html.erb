@@ -2,7 +2,7 @@
   <div class="panel-body">
       <div class="col-md-10 col-md-offset-1">
         <div class="basic-info">
-          <h1 class="shop-name"><%= @business.name %></h1>
+          <h1 class="shop-name"><%= link_to @business.name, edit_business_path %></h1>
           <div class="brief-info">
             <span class="star-rating" data-score = <%= @avg_review %> ></span>
             <span class="item"><em><%= "#{@reviews.length} reviews"%></em></span>
