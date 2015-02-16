@@ -10,7 +10,7 @@
   <% @businesses.each do |business| %>
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
-        <%= image_tag business.image_url.to_s %>
+        <%= image_tag business.image_url(:thumb).to_s %>
         <div class="text-center">
           <strong><%= link_to business.name, business %></strong>
         </div>

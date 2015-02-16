@@ -16,6 +16,7 @@ gem 'searchkick', '~> 0.8.5'
 gem 'simple_form', '~> 3.0.2'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'carrierwave', '~> 0.10.0'
+gem 'rmagick'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 group :development do
