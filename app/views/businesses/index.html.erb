@@ -1,8 +1,23 @@
-<% if !user_signed_in? %>
+
+
+<% if user_signed_in? %>
+  <div class="container search">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <%= form_tag businesses_path, method: :get, class: "input-group", role: "search" do %>
+          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Find restaurants, cafes, fun places" %>
+          <span class="input-group-btn">
+             <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>  
+          </span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% else %>
   <div class="jumbotron">
     <h1>Heading out? Bring Yelper with you.</h1>
     <p>Hashtag hoodie mumblecore selfies. Authentic keffiyeh leggings Kickstarter, narwhal jean shorts XOXO Vice Austin cardigan. Organic drinking vinegar freegan pickled.</p>
-    <p><%= link_to "Sign Up To Write A Review", new_user_registration_path, class: "btn btn-danger btn-lg" %></p>
+    <p><%= link_to "Sign Up To Write A Review", new_user_registration_path, class: "btn btn-default btn-lg" %></p>
   </div>
 <% end %>
 
